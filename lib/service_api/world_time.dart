@@ -12,22 +12,27 @@ class WorldTime {
       {required this.location, required this.flag, required this.locationUrl});
 
   Future<void> getTime() async {
-    Response response = await get(
-        Uri.parse(('http://worldtimeapi.org/api/timezone/$locationUrl')));
-    Map jsonData = jsonDecode(response.body);
-    //print(jsonData['timezone']);
-    //print(jsonData);
+    try {
+      Response response = await get(
+          Uri.parse(('http://worldtimeapi.org/api/timezone/$locationUrl')));
+      Map jsonData = jsonDecode(response.body);
+      //print(jsonData['timezone']);
+      //print(jsonData);
 
-    // get properties
+      // get properties
 
-    String dateTime = jsonData['datetime'];
-    //String offset = jsonData['utc_offset'];
-    //print(dateTime);
-    print(dateTime);
-    date = dateTime.substring(0, 10);
-    time = dateTime.substring(11, 19);
-    //print(dateTime);
-    //print(offset);
-    //print(time);
+      String dateTime = jsonData['datetime'];
+      //String offset = jsonData['utc_offset'];
+      //print(dateTime);
+      print(dateTime);
+      date = dateTime.substring(0, 10);
+      time = dateTime.substring(11, 19);
+      //print(dateTime);
+      //print(offset);
+      //print(time);
+
+    } catch (e) {
+      time = "Could not get time";
+    }
   }
 }
