@@ -1,5 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class WorldTime {
   late String location; // location name for the UI
@@ -22,11 +23,21 @@ class WorldTime {
       // get properties
 
       String dateTime = jsonData['datetime'];
+      location = jsonData['timezone'];
+      location = location.split('/')[1];
+      //print(location);
       //String offset = jsonData['utc_offset'];
+      //DateTime now = DateTime.parse(dateTime);
+      time = dateTime.substring(0, 10) + ' ' + dateTime.substring(11, 26) + 'Z';
+      DateTime now = DateTime.parse(time); // To convert into DateTime object
+      time = DateFormat.jm().format(now);
+      //print(time);
+      //print(now);
+      //print(now.runtimeType);
       //print(dateTime);
-      print(dateTime);
       date = dateTime.substring(0, 10);
-      time = dateTime.substring(11, 19);
+      //time = dateTime.substring(11, 19);
+
       //print(dateTime);
       //print(offset);
       //print(time);

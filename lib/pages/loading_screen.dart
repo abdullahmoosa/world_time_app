@@ -13,11 +13,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
     WorldTime countryTime = WorldTime(
         location: 'Berlin', flag: 'germany.png', locationUrl: 'Europe/Berlin');
     await countryTime.getTime();
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': countryTime.location,
+      'flag': countryTime.flag,
+      'time': countryTime.time
+    });
 
     setState(() {
       screenTime = countryTime.time;
     });
-    print(countryTime.time);
+    //print(countryTime.time);
   }
 
   @override

@@ -10,7 +10,7 @@ void main() {
     routes: {
       '/': (context) => LoadingScreen(),
       '/home': (context) => Home(),
-      './choosing_location': (context) => ChooseLocation()
+      '/choosing_location': (context) => ChooseLocation()
     },
   ));
 }
