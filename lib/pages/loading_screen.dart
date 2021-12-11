@@ -14,7 +14,7 @@ String screenTime = 'Loading'; // To show the time
 class _LoadingScreenState extends State<LoadingScreen> {
   void setWorldTime() async {
     WorldTime countryTime = WorldTime(
-        location: 'Berlin', flag: 'germany.png', locationUrl: 'Europe/Berlin');
+        location: 'Dhaka', flag: 'bangladesh.png', locationUrl: 'Asia/Dhaka');
     await countryTime.getTime();
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': countryTime.location,

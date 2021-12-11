@@ -6,6 +6,9 @@ import 'package:world_time_app/pages/loading_screen.dart';
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData(
+      highlightColor: Colors.blue[900],
+    ),
     initialRoute: '/',
     routes: {
       '/': (context) => LoadingScreen(),

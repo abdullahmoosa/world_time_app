@@ -26,6 +26,21 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime(
         locationUrl: 'Asia/Seoul', location: 'Seoul', flag: 'south_korea.png'),
     WorldTime(
+        locationUrl: 'Asia/Dhaka', location: 'Dhaka', flag: 'bangladesh.png'),
+    WorldTime(locationUrl: 'Asia/Dubai', location: 'Dubai', flag: 'uae.png'),
+    WorldTime(
+        locationUrl: 'Asia/Hong_Kong',
+        location: 'Hong Kong',
+        flag: 'hongkong.png'),
+    WorldTime(
+        locationUrl: 'Asia/Kolkata', location: 'Kolkata', flag: 'india.png'),
+    WorldTime(
+        locationUrl: 'Europe/Moscow', location: 'Moscow', flag: 'russia.png'),
+    WorldTime(
+        locationUrl: 'Europe/Istanbul',
+        location: 'Istanbul',
+        flag: 'turkey.png'),
+    WorldTime(
         locationUrl: 'Asia/Jakarta',
         location: 'Jakarta',
         flag: 'indonesia.png'),
@@ -44,7 +59,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
   @override
   Widget build(BuildContext context) {
-    print('Build state run');
+    //print('Build state run');
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
@@ -55,18 +70,31 @@ class _ChooseLocationState extends State<ChooseLocation> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: locations.length,
-        itemBuilder: (context, index) => Card(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
-            child: ListTile(
-              onTap: () {
-                updateTime(index);
-              },
-              title: Text(locations[index].location),
-              leading: CircleAvatar(
-                backgroundImage: AssetImage('assets/${locations[index].flag}'),
+      body: Scrollbar(
+        thickness: 8,
+        //isAlwaysShown: true,
+        showTrackOnHover: true,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 5, 10, 5),
+          child: ListView.builder(
+            itemCount: locations.length,
+            itemBuilder: (context, index) => Card(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+                child: ListTile(
+                  onTap: () {
+                    updateTime(index);
+                  },
+                  title: Text(
+                    locations[index].location,
+                    style: TextStyle(fontFamily: 'Oxygen', fontSize: 18),
+                  ),
+                  leading: CircleAvatar(
+                    backgroundImage:
+                        AssetImage('assets/${locations[index].flag}'),
+                  ),
+                ),
               ),
             ),
           ),
