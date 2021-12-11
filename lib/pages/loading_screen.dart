@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:world_time_app/service_api/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -16,7 +19,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': countryTime.location,
       'flag': countryTime.flag,
-      'time': countryTime.time
+      'time': countryTime.time,
+      'isDayTime': countryTime.isDayTime
     });
 
     setState(() {
@@ -34,10 +38,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(50.0),
-        child: Text(screenTime),
-      ),
-    );
+        backgroundColor: Colors.deepPurple[800],
+        body: Center(
+          child: SpinKitFadingCube(
+            color: Colors.white,
+            size: 80.0,
+          ),
+        ));
   }
 }

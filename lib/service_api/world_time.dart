@@ -8,6 +8,7 @@ class WorldTime {
   late String flag; // url to asset the respective flag
   late String locationUrl; // api endpoint URl indicating current location
   late String date; // current date
+  late bool isDayTime; // true if daytime and false if nighttime
 
   WorldTime(
       {required this.location, required this.flag, required this.locationUrl});
@@ -25,16 +26,12 @@ class WorldTime {
       String dateTime = jsonData['datetime'];
       location = jsonData['timezone'];
       location = location.split('/')[1];
-      //print(location);
-      //String offset = jsonData['utc_offset'];
-      //DateTime now = DateTime.parse(dateTime);
+
       time = dateTime.substring(0, 10) + ' ' + dateTime.substring(11, 26) + 'Z';
       DateTime now = DateTime.parse(time); // To convert into DateTime object
       time = DateFormat.jm().format(now);
-      //print(time);
-      //print(now);
-      //print(now.runtimeType);
-      //print(dateTime);
+
+      isDayTime = now.hour > 6 && now.hour < 18 ? true : false;
       date = dateTime.substring(0, 10);
       //time = dateTime.substring(11, 19);
 
