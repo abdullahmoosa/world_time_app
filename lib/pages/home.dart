@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:world_time_app/pages/choosing_location.dart';
+//import 'package:world_time_app/pages/choosing_location.dart';
 
 class Home extends StatefulWidget {
   @override
